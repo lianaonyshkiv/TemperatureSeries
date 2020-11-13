@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    static final int minTemp = -273;
+    static final int MINTEMP = -273;
 
     private double[] temperatures = {};
 
@@ -20,7 +20,7 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (double temperature : temperatureSeries) {
-            if (temperature < minTemp) {
+            if (temperature < MINTEMP) {
                 throw new InputMismatchException();
             }
         }
@@ -53,7 +53,7 @@ public class TemperatureSeriesAnalysis {
         return Math.sqrt(deviation / occupancy);
     }
 
-    private double MaxMinComparisons(String param) {
+    private double maxMinComparisons(String param) {
         if (occupancy == 0) {
             throw new IllegalArgumentException();
         }
@@ -71,11 +71,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() {
-        return MaxMinComparisons("min");
+        return maxMinComparisons("min");
     }
 
     public double max() {
-        return MaxMinComparisons("max");
+        return maxMinComparisons("max");
     }
 
     public double findTempClosestToZero() {
@@ -91,14 +91,15 @@ public class TemperatureSeriesAnalysis {
         for (double temperature : temperatures) {
             double currentDifferent = Math.abs(temperature - tempValue);
             difference = Math.min(difference, currentDifferent);
-            if (difference > currentDifferent || (difference == currentDifferent && currentDifferent > 0)) {
+            if (difference > currentDifferent || (difference == currentDifferent &&
+                    currentDifferent > 0)) {
                 closestValue = temperature;
             }
         }
         return closestValue;
     }
 
-    public double[] Comparisons(double tempValue, String param) {
+    public double[] comparisons(double tempValue, String param) {
         if (occupancy == 0) {
             throw new IllegalArgumentException();
         }
@@ -119,11 +120,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
-        return Comparisons(tempValue, "less");
+        return comparisons(tempValue, "less");
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
-        return Comparisons(tempValue, "greater");
+        return comparisons(tempValue, "greater");
     }
 
     public TempSummaryStatistics summaryStatistics() {
@@ -135,7 +136,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         for (double temp : temps) {
-            if (temp < minTemp) {
+            if (temp < MINTEMP) {
                 throw new InputMismatchException();
             }
             if (capacity == 0) {
