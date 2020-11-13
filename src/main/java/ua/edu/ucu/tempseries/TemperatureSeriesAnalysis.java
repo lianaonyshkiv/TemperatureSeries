@@ -25,7 +25,7 @@ public class TemperatureSeriesAnalysis {
                 throw new InputMismatchException();
             }
         }
-        temperatures = temperatureSeries;
+        temperatures = temperatureSeries.clone();
         capacity = temperatureSeries.length;
         occupancy = capacity;
     }
