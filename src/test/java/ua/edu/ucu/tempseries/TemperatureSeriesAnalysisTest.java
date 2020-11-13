@@ -86,4 +86,18 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResultOpposite = new double[]{2.0};
         assertArrayEquals(expResultOpposite, actualResultOpposite, 0.00001);
     }
+
+    @Test
+    public void testEqualsSummaryStatistics() {
+        TemperatureSeriesAnalysis actualResult = standart;
+        TempSummaryStatistics expResult = standart.summaryStatistics();
+        assertNotEquals(expResult, actualResult);
+    }
+
+    @Test
+    public void testEqualsHashCode() {
+        TemperatureSeriesAnalysis actualResult = new TemperatureSeriesAnalysis(new double[]{9.0, 1.0, 5.0, 7.0, 6.0});
+        TemperatureSeriesAnalysis expResult = new TemperatureSeriesAnalysis(new double[]{1.0, 9.0, 7.0, 6.0, 5.0});
+        assertNotEquals(expResult, actualResult);
+    }
 }
