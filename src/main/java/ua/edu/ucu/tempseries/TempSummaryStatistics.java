@@ -39,7 +39,8 @@ public final class TempSummaryStatistics {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(new double[]{getAvgTemp(), getDevTemp(), getMaxTemp(), getMinTemp()});
+        return Arrays.hashCode(new double[]{getAvgTemp(), getDevTemp(),
+                getMaxTemp(), getMinTemp()});
     }
 
     public double getAvgTemp() {
