@@ -71,13 +71,16 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSummaryStatistics() {
         TempSummaryStatistics actualResultStandart = standart.summaryStatistics();
         TempSummaryStatistics expResultStandart = new TempSummaryStatistics(-2.25, 4.4370598373, -8.0, 3.0);
-        assertEquals(actualResultStandart, expResultStandart);
+        boolean testZero = (actualResultStandart.equals(expResultStandart));
+        assertTrue(testZero);
         TempSummaryStatistics actualResultOneElement = oneElement.summaryStatistics();
         TempSummaryStatistics expResultOneElement = new TempSummaryStatistics(-1.0, 0.0, -1.0, -1.0);
-        assertEquals(actualResultOneElement, expResultOneElement);
+        boolean testOne = (actualResultOneElement.equals(expResultOneElement));
+        assertTrue(testOne);
         TempSummaryStatistics actualResultOpposite = oppositeData.summaryStatistics();
         TempSummaryStatistics expResultOpposite = new TempSummaryStatistics(0.0, 2.0, -2.0, 2.0);
-        assertEquals(actualResultOpposite, expResultOpposite);
+        boolean testTwo = (actualResultOpposite.equals(expResultOpposite));
+        assertTrue(testTwo);
     }
 
     @Test
