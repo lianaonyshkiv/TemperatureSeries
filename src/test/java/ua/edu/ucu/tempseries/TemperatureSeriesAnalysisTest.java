@@ -32,15 +32,40 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testTemperatureSummaryException() {
         TempSummaryStatistics result = empty.summaryStatistics();
-        TempSummaryStatistics actualResult = withoutElements.summaryStatistics();
+        TempSummaryStatistics withoutResult = withoutElements.summaryStatistics();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMinMaxComparisons() {
         double expResult = empty.maxMinComparisons("min");
-        double expResultClosest = empty.findTempClosestToValue(12);
 
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindTempClosestToValue() {
+        double expResultClosest = empty.findTempClosestToValue(12);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDeviation() {
+        double expResultDeviation = empty.deviation();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testComparisons() {
+        double[] expResultComparisons = empty.comparisons(12.0, "min");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAverage() {
+        double expAverage = empty.average();
+    }
+
+    @Test(expected = InputMismatchException.class)
+    public void testAddTemps() {
+        double expAddTemps = empty.addTemps(-274);
+    }
+
 
     @Test
     public void testTemperatureSummaryStatistics() {
@@ -80,7 +105,6 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResultOpposite = new double[]{-2.0};
         assertArrayEquals(expResultOpposite, actualResultOpposite, 0.00001);
     }
-
 
 
     @Test
