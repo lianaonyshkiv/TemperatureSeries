@@ -1,5 +1,7 @@
 package ua.edu.ucu.tempseries;
 
+import java.util.Arrays;
+
 public final class TempSummaryStatistics {
     static final double DELTA = 1e-6;
     private final double avgTemp;
@@ -30,8 +32,14 @@ public final class TempSummaryStatistics {
                 ((TempSummaryStatistics) other).getMaxTemp());
     }
 
+
     private boolean equalsTwoParam(double paramOne, double paramTwo) {
         return Math.abs(paramOne - paramTwo) < DELTA;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(new double[]{getAvgTemp(), getDevTemp(), getMaxTemp(), getMinTemp()});
     }
 
     public double getAvgTemp() {
