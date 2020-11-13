@@ -48,7 +48,7 @@ public class TemperatureSeriesAnalysis {
         double deviation = 0;
         double avr = average();
         for (double temperature : temperatures) {
-            deviation += Math.pow(temperature - avr, 2);
+            deviation += (temperature - avr) * (temperature - avr);
         }
         return Math.sqrt(deviation / occupancy);
     }
@@ -91,8 +91,8 @@ public class TemperatureSeriesAnalysis {
         for (double temperature : temperatures) {
             double currentDifferent = Math.abs(temperature - tempValue);
             difference = Math.min(difference, currentDifferent);
-            if (difference > currentDifferent || (difference == currentDifferent &&
-                    currentDifferent > 0)) {
+            if (difference > currentDifferent || (difference
+                    == currentDifferent && currentDifferent > 0)) {
                 closestValue = temperature;
             }
         }

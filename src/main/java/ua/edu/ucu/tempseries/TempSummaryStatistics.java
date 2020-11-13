@@ -6,7 +6,8 @@ public final class TempSummaryStatistics {
     private final double minTemp;
     private final double maxTemp;
 
-    TempSummaryStatistics(double avgTemp, double devTemp, double minTemp, double maxTemp) {
+    TempSummaryStatistics(double avgTemp, double devTemp,
+                          double minTemp, double maxTemp) {
         this.avgTemp = avgTemp;
         this.devTemp = devTemp;
         this.minTemp = minTemp;
@@ -18,14 +19,18 @@ public final class TempSummaryStatistics {
         if (!(other instanceof TempSummaryStatistics)) {
             return false;
         }
-        return equalsTwoParam(avgTemp, ((TempSummaryStatistics) other).getAvgTemp())
-                && equalsTwoParam(devTemp, ((TempSummaryStatistics) other).getDevTemp())
-                && equalsTwoParam(minTemp, ((TempSummaryStatistics) other).getMinTemp())
-                && equalsTwoParam(maxTemp, ((TempSummaryStatistics) other).getMaxTemp());
+        return equalsTwoParam(avgTemp,
+                ((TempSummaryStatistics) other).getAvgTemp())
+                && equalsTwoParam(devTemp,
+                ((TempSummaryStatistics) other).getDevTemp())
+                && equalsTwoParam(minTemp,
+                ((TempSummaryStatistics) other).getMinTemp())
+                && equalsTwoParam(maxTemp,
+                ((TempSummaryStatistics) other).getMaxTemp());
     }
-
-    private boolean equalsTwoParam(double Param1, double Param2) {
-        return Math.abs(Param1 - Param2) < 0.00001;
+    static final double DELTA = 1e-6;
+    private boolean equalsTwoParam(double param1, double param2) {
+        return Math.abs(param1 - param2) < DELTA;
     }
 
     public double getAvgTemp() {
