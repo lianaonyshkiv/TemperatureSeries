@@ -1,6 +1,7 @@
 package ua.edu.ucu.tempseries;
 
 public final class TempSummaryStatistics {
+    static final double DELTA = 1e-6;
     private final double avgTemp;
     private final double devTemp;
     private final double minTemp;
@@ -28,9 +29,9 @@ public final class TempSummaryStatistics {
                 && equalsTwoParam(maxTemp,
                 ((TempSummaryStatistics) other).getMaxTemp());
     }
-    static final double DELTA = 1e-6;
-    private boolean equalsTwoParam(double param1, double param2) {
-        return Math.abs(param1 - param2) < DELTA;
+
+    private boolean equalsTwoParam(double paramOne, double paramTwo) {
+        return Math.abs(paramOne - paramTwo) < DELTA;
     }
 
     public double getAvgTemp() {
