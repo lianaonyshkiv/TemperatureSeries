@@ -33,7 +33,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSummaryException() {
         TempSummaryStatistics result = empty.summaryStatistics();
         TempSummaryStatistics actualResult = withoutElements.summaryStatistics();
-        double[] expResult = empty.findTempsGreaterThen(12);
+        double expResult = empty.maxMinComparisons("min");
         double expResultClosest = empty.findTempClosestToValue(12);
 
     }

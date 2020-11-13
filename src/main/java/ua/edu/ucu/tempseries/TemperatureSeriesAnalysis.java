@@ -54,7 +54,7 @@ public class TemperatureSeriesAnalysis {
         return Math.sqrt(deviation / occupancy);
     }
 
-    private double maxMinComparisons(String param) {
+    public double maxMinComparisons(String param) {
         if (occupancy == 0) {
             throw new IllegalArgumentException();
         }
