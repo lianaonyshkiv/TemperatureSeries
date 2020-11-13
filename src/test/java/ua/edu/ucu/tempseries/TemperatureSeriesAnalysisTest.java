@@ -96,8 +96,8 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testEqualsHashCode() {
-        TemperatureSeriesAnalysis actualResult = new TemperatureSeriesAnalysis(new double[]{9.0, 1.0, 5.0, 7.0, 6.0});
-        TemperatureSeriesAnalysis expResult = new TemperatureSeriesAnalysis(new double[]{1.0, 9.0, 7.0, 6.0, 5.0});
-        assertNotEquals(expResult, actualResult);
+        TempSummaryStatistics expResult = new TempSummaryStatistics(-1.0, 2.0, 3.0, 5.0);
+        TempSummaryStatistics actualResult = new TempSummaryStatistics(-2.0, -1.0, 3.0, 2.0);
+        assertNotEquals(expResult.hashCode(), actualResult.hashCode());
     }
 }
