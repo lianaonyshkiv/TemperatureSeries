@@ -33,13 +33,13 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSummaryException() {
         TempSummaryStatistics result = empty.summaryStatistics();
         TempSummaryStatistics actualResult = withoutElements.summaryStatistics();
-//        double expResult = empty.maxMinComparisons("min");
-//        double expResultClosest = empty.findTempClosestToValue(12);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testMinMaxComparisons() {
         double expResult = empty.maxMinComparisons("min");
+        double expResultClosest = empty.findTempClosestToValue(12);
+
     }
 
     @Test
