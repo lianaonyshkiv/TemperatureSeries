@@ -33,6 +33,9 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSummaryException() {
         TempSummaryStatistics result = empty.summaryStatistics();
         TempSummaryStatistics actualResult = withoutElements.summaryStatistics();
+        double[] expResult = empty.findTempsGreaterThen(12);
+        double expResultClosest = empty.findTempClosestToValue(12);
+
     }
 
     @Test
@@ -56,7 +59,7 @@ public class TemperatureSeriesAnalysisTest {
         double actualResultOneElement = oneElement.findTempClosestToValue(12);
         double expResultOneElement = -1.0;
         assertEquals(expResultOneElement, actualResultOneElement, 0.00001);
-        double actualResultOpposite = oppositeData.findTempClosestToValue(0);
+        double actualResultOpposite = oppositeData.findTempClosestToZero();
         double expResultOpposite = 2.0;
         assertEquals(expResultOpposite, actualResultOpposite, 0.00001);
     }
@@ -73,6 +76,8 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResultOpposite = new double[]{-2.0};
         assertArrayEquals(expResultOpposite, actualResultOpposite, 0.00001);
     }
+
+
 
     @Test
     public void testFindTempGreaterThan() {
